@@ -47,7 +47,21 @@ highlighter: rouge
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
+# 评论系统
+# Disqus（https://disqus.com/）
+# disqus_username: yizhe_shi
 
+# Gitalk
+gitalk:
+  enable: true    #是否开启Gitalk评论
+  clientID: 30088b0a7685ff3da785                            #生成的clientID
+  clientSecret: 12322a0315d71d35988e077c924a353e84b25703    #生成的clientSecret
+  repo: syz913.github.io    #仓库名称
+  owner: syz913    #github用户名
+  admin: syz913    #这个仓库的管理员，可以有多个，用数组表示，一般写自己,
+  id: 'window.location.pathname', #页面的唯一标识，gitalk 会根据这个标识自动创建的issue的标签,我们使用页面的相对路径作为标识
+  distractionFreeMode: true #是否启用类似FB的阴影遮罩
+  
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
 featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
