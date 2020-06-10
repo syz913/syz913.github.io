@@ -59,7 +59,6 @@ gitalk:
   repo: syz913.github.io    #仓库名称
   owner: syz913    #github用户名
   admin: syz913    #这个仓库的管理员，可以有多个，用数组表示，一般写自己,
-  id: 'window.location.pathname', #页面的唯一标识，gitalk 会根据这个标识自动创建的issue的标签,我们使用页面的相对路径作为标识
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
   
 # Featured Tags
