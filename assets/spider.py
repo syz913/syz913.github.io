@@ -1,16 +1,3 @@
----
-layout:     post   				    # 使用的布局（不需要改）
-title:      python简单爬虫 				# 标题 
-author:     SYZ					# 作者
-header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
-catalog: true 						# 是否归档
-tags:								#标签
-    - knowledge
----
-
-# 源码
-
-```python
 # -*- coding:utf-8  -*-
 
 import requests
@@ -70,9 +57,3 @@ else:
     for key in popular_words.keys():
         print(key)
         print(popular_words[key] + "\n")
-        
-```
-
-# 文件地址
-
-[下载 python 文件]({{ site.url }}/assets/spider.py)
