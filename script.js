@@ -2,7 +2,6 @@
 const canvas = document.getElementById("canvas");
 const canvasCtx = canvas.getContext("2d");
 const audio = document.getElementById("audio");
-var src;
 //首先实例化AudioContext对象 很遗憾浏览器不兼容，只能用兼容性写法；audioContext用于音频处理的接口，并且工作原理是将AudioContext创建出来的各种节点(AudioNode)相互连接，音频数据流经这些节点并作出相应处理。
 //总结就一句话 AudioContext 是音频对象，就像 new Date()是一个时间对象一样
 var AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
@@ -50,7 +49,7 @@ function handleFile(file) {
             // 我们可以把它理解为声卡。所以所有节点中的最后一个节点应该再
             // 连接到audioContext.destination才能听到声音。
             // audioBufferSourceNode.connect(analyser);
-            src = src || audioContext.createMediaElementSource(audio);
+            let src = audioContext.createMediaElementSource(audio);
             src.connect(analyser);
             analyser.connect(audioContext.destination);
             console.log(audioContext.destination)
@@ -186,7 +185,7 @@ $('#randomPlay').click(function() {
     audio.src = musicSrcs[index];
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 8192;
-    src = src || audioContext.createMediaElementSource(audio);
+    let src = audioContext.createMediaElementSource(audio);
     src.connect(analyser);
     analyser.connect(audioContext.destination);
     console.log(audioContext.destination)
