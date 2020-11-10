@@ -2,6 +2,7 @@
 const canvas = document.getElementById("canvas");
 const canvasCtx = canvas.getContext("2d");
 const audio = document.getElementById("audio");
+var src;
 //首先实例化AudioContext对象 很遗憾浏览器不兼容，只能用兼容性写法；audioContext用于音频处理的接口，并且工作原理是将AudioContext创建出来的各种节点(AudioNode)相互连接，音频数据流经这些节点并作出相应处理。
 //总结就一句话 AudioContext 是音频对象，就像 new Date()是一个时间对象一样
 var AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
@@ -49,7 +50,7 @@ function handleFile(file) {
             // 我们可以把它理解为声卡。所以所有节点中的最后一个节点应该再
             // 连接到audioContext.destination才能听到声音。
             // audioBufferSourceNode.connect(analyser);
-            let src = audioContext.createMediaElementSource(audio);
+            src = src || audioContext.createMediaElementSource(audio);
             src.connect(analyser);
             analyser.connect(audioContext.destination);
             console.log(audioContext.destination)
@@ -167,22 +168,25 @@ function parseLyric(text) {
     }
     return result;
 }
-
 //随机播放一首歌
 var musicSrcs = ['./assets/稻香-周杰伦.mp3', './assets/太阳 (Live) - 萧敬腾.mp3'];
 var lyricSrcs = ['./assets/稻香-歌词.lrc', './assets/太阳.lrc'];
 $('#randomPlay').click(function() {
     var index = Math.round(Math.random());
-    $.get(lyricSrcs[index], function(lrc) {
-        lyric = parseLyric(lrc);
-    });
+    try {
+        $.get(lyricSrcs[index], function(lrc) {
+            lyric = parseLyric(lrc);
+        });
+    }catch(err){
+        alert(err)
+    }
     console.log(index)
     var source = musicSrcs[index]
     $('#title').text(source.substring(9, source.length - 4))
     audio.src = musicSrcs[index];
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 8192;
-    let src = audioContext.createMediaElementSource(audio);
+    src = src || audioContext.createMediaElementSource(audio);
     src.connect(analyser);
     analyser.connect(audioContext.destination);
     console.log(audioContext.destination)
