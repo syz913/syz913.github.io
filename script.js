@@ -172,12 +172,13 @@ function parseLyric(text) {
 var musicSrcs = ['./assets/稻香-周杰伦.mp3', './assets/太阳 (Live) - 萧敬腾.mp3'];
 var lyricSrcs = ['./assets/稻香-歌词.lrc', './assets/太阳.lrc'];
 $('#randomPlay').click(function() {
-    var index = Math.random();
+    var index = Math.round(Math.random());
     $.get(lyricSrcs[index], function(lrc) {
         lyric = parseLyric(lrc);
     });
-
-    $('#title').text( musicSrcs[index].substring(9, musicSrcs[index].length - 4))
+    console.log(index)
+    var source = musicSrcs[index]
+    $('#title').text(source.substring(9, source.length - 4))
     audio.src = musicSrcs[index];
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 8192;
