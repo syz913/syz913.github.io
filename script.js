@@ -78,10 +78,17 @@ $('#musicFile').change(function() {
                     //随机数0-255   Math.floor(Math.random()*255)  
                     // 随机数  10*Math.random()
                     canvasCtx.fillColor = 'rgb(0, 204, 255)';
+                    // 根据频率不同，绘制不同的颜色
+                    if (dataArray[step * i] > 200) {
+                        randomColor = 'rgb(0, 126, 255)';
+                    } else if (dataArray[step * i] > 160 || dataArray[step * i] < 50) {
+                        randomColor = 'rgb(135, 206, 250)';
+                    } else {
+                        randomColor = 'rgb(0, 204, 255)'
+                    }
                     //每1s换一次颜色
-                    if (i % 10 == 0) randomColor = 'rgb(' + (barHeight - 150) + ',' + Math.floor(Math.random() * (20 - 160) + 255) + ',' + Math.floor(Math.random() * (20 - 160) + 255) + ')';
+                    // if (i % 10 == 0) randomColor = 'rgb(' + (barHeight - 150) + ',' + Math.floor(Math.random() * (20 - 160) + 255) + ',' + Math.floor(Math.random() * (20 - 160) + 255) + ')';
                     canvasCtx.fillStyle = randomColor;
-                    // canvasCtx.fillRect(x, 500 - barHeight / 2, barWidth, barHeight / 2);
                     //右边一半的频谱图
                     canvasCtx.fillRect(i * 3 + mid, 80, 2, -barHeight / 4 + 1);
                     //左边一半的频谱图
@@ -89,7 +96,6 @@ $('#musicFile').change(function() {
                     canvasCtx.fill();
                     canvasCtx.fillRect(i * 3 + mid, 80, 2, barHeight / 4 + 1);
                     canvasCtx.fillRect(mid - (i - 1) * 3, 80, 2, barHeight / 4 + 1);
-                    // x += barWidth + 1;
                 }
                 requestAnimationFrame(draw);
             };
@@ -98,7 +104,6 @@ $('#musicFile').change(function() {
         });
     }
 })
-
 var lyric = [];
 var lyricContainer = document.getElementById('show-lrc-content');
 $('#lyricFile').change(function() {
@@ -115,7 +120,6 @@ $('#lyricFile').change(function() {
     };
     reader.readAsText(file);
 })
-
 //监听ontimeupdate事件
 document.getElementById('audio').ontimeupdate = function(e) {
     if (this.ended) {
