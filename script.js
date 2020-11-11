@@ -190,6 +190,7 @@ window.onload = function() {
     //监听ontimeupdate事件
     document.getElementById('audio').ontimeupdate = function(e) {
         if (this.ended) {
+            audio.play();
             // palyMusic(0);
         }
         //遍历所有歌词，看哪句歌词的时间与当然时间吻合
@@ -233,10 +234,16 @@ window.onload = function() {
     }, {
         src: './assets/sun.mp3',
         name: "太阳—萧敬腾"
+    }, {
+    	src: './assets/silence.mp3',
+    	name: "静悄悄—大泫"
+    }, {
+    	src: './assets/memory.mp3',
+    	name: "我怀念的—孙燕姿"
     }];
-    var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc'];
+    var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc', './assets/silence.lrc', './assets/memory.lrc'];
     $('#randomPlay').click(function() {
-        var index = Math.round(Math.random());
+        var index = Math.floor(Math.random() * 4);
         console.log(index)
         var source = musicSrcs[index]
         try {
