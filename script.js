@@ -16,12 +16,12 @@ $('#musicFile').change(function() {
     if (this.files.length == 0) return;
     var file = $('#musicFile')[0].files[0]; //通过input上传的音频文件
     console.log('FILES[0]: ', file);
-    handleFile(file);
+    var fileName = file.name;
+    handleFile(file, fileName.substring(0, fileName.length - 4));
 })
 
-function handleFile(file) {
-    var fileName = file.name;
-    $('#title').text(fileName.substring(0, fileName.length - 4))
+function handleFile(file, name) {
+    $('#title').text(name)
     audio.src = URL.createObjectURL(file);
     var fileReader = new FileReader(); //使用FileReader异步读取文件
     fileReader.readAsArrayBuffer(file); //开始读取音频文件
@@ -168,11 +168,13 @@ function parseLyric(text) {
     return result;
 }
 //随机播放一首歌
-var musicSrcs = [{src: './assets/daoxiang.mp3',name : '稻香—周杰伦'},
+var musicSrcs = [{src: './assets/daoxiang.mp3',name: '稻香—周杰伦'},
 				 {src: './assets/sun.mp3', name: "太阳—萧敬腾"}];
 var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc'];
 $('#randomPlay').click(function() {
     var index = Math.round(Math.random());
+    console.log(index)
+    var source = musicSrcs[index]
     try {
         $.get(lyricSrcs[index], function(lrc) {
             lyric = parseLyric(lrc);
