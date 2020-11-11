@@ -1,29 +1,25 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <title>可视化音乐播放器</title>
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <a href="javascript:;" class="file">
-      <input type="submit" id="randomPlay">随机播放歌曲</input>
-    </a>
-    <a href="javascript:;" class="file">
-      选择歌词
-      <input type="file" name="" value="" id="lyricFile">
-    </a>
-    <a href="javascript:;" class="file">
-      选择歌曲
-      <input type="file" name="" value="" id="musicFile">
-    </a>
-    <p id="tip"></p>
-    <div class="container">
-        <p id="title" style="text-align:center;font-size: 30px;color:dodgerblue">your only live once</p>
-        <canvas id="canvas" width="600" height="160"></canvas>
-    </div>
-    <div class="lyric-content" id="show-lrc-content">loading...</div>      
-    <audio id="audio" controls autoplay></audio>
-    <script type="text/javascript" src="script.js"></script>
-</body>
-</html>
+---
+layout: default
+description: "网络似乎出现了问题 😥"
+header-img: "img/404-bg.jpg"
+permalink: /offline.html
+---
+
+
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="site-heading" id="tag-heading">
+					<h1>Offline</h1>
+					<span class="subheading">{{ page.description }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<script>
+	document.body.classList.add('page-fullscreen');
+</script>
