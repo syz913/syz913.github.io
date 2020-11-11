@@ -209,7 +209,7 @@ window.onload = function() {
         //新建一个数组存放最后结果      
         //遍历分割后的歌词数组，将格式化后的时间节点，歌词填充到result数组           
         for (i = 0; i < lyricArr.length; i++) {
-            let playTimeArr = lyricArr[i].match(/\[\d{2}:\d{2}((\.|\:)\d{2})\]/g);
+            let playTimeArr = lyricArr[i].match(/\[\d{2}:\d{2}((\.|\:)\d{2,3})\]/g);
             //正则匹配播放时间               
             let lineLyric = "";
             if (lyricArr[i].split(playTimeArr).length > 0) {
