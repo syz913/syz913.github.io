@@ -238,12 +238,12 @@ $('#randomPlay').click(function() {
     var dataArray = new Uint8Array(bufferLength);
     console.log(dataArray)
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+    var step = Math.round(bufferLength / 120);
     function draw() {
         analyser.getByteFrequencyData(dataArray);
         canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
         var barHeight;
-        var step = Math.round(bufferLength / 120);;
         canvasCtx.beginPath();
         const mid = Math.round(canvas.width * .5);
         var randomColor = 'rgb(0, 204, 255)'; //随机颜色
@@ -266,6 +266,30 @@ $('#randomPlay').click(function() {
         }
         requestAnimationFrame(draw);
     };
+    function draw2(){
+        analyser.getByteFrequencyData(dataArray);
+        //绘制能量球
+        for (var i = 0; i < 120; i++) {
+            var s = visualizer[i];
+            s.radius = Math.round(dataArray[step * i] / 256 * (window.width > window.height ? canvas.width / 25 : canvas.height / 18));　　//控制能量球大小与画布大小的比例
+            var gradient = canvasCtx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius);　　//创建能量球的渐变样式
+            gradient.addColorStop(0, "#fff");
+            gradient.addColorStop(0.5, "#D2BEC0");
+            gradient.addColorStop(0.75, s.color.substring(0, s.color.lastIndexOf(",")) + ",0.4)");
+            gradient.addColorStop(1, s.color);
+            canvasCtx.fillStyle = gradient;
+            canvasCtx.beginPath();
+            canvasCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2, false);　　//画一个能量球
+            canvasCtx.fill();
+            s.y = s.y - 2 * s.dy;　　//能量球向上移动
+            if (s.y <= 0) {　　//到画布顶端的时候重置s.y，随机化s.x
+                s.y = canvas.height;　　
+                s.x = random(0, canvas.width);
+            }
+        }
+        requestAnimationFrame(draw2);
+    }
     audio.play();
     draw();
+    draw2();
 })
