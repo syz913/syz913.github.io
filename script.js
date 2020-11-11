@@ -168,8 +168,8 @@ function parseLyric(text) {
     return result;
 }
 //随机播放一首歌
-var musicSrcs = ['./assets/稻香-周杰伦.mp3', './assets/太阳 (Live) - 萧敬腾.mp3'];
-var lyricSrcs = ['./assets/稻香-歌词.lrc', './assets/太阳.lrc'];
+var musicSrcs = ['./assets/daoxiang.mp3', './assets/sun.mp3'];
+var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc'];
 $('#randomPlay').click(function() {
     var index = Math.round(Math.random());
     try {
