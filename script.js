@@ -181,9 +181,9 @@ $('#randomPlay').click(function() {
         $.get(lyricSrcs[index], function(lrc) {
             lyric = parseLyric(lrc);
         });
-        $.get(musicSrcs[index].src, function(file)){
+        $.get(musicSrcs[index].src, function(file) {
         	handleFile(file);
-        }
+        });
     }catch(err){
         alert(err)
     }    
