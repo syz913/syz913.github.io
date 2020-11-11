@@ -168,61 +168,23 @@ function parseLyric(text) {
     return result;
 }
 //随机播放一首歌
-var musicSrcs = [{src: './assets/daoxiang.mp3',name : '稻香—周杰伦'},
+var musicSrcs = [{src: './assets/daoxiang.mp3',name: '稻香—周杰伦'},
 				 {src: './assets/sun.mp3', name: "太阳—萧敬腾"}];
 var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc'];
 $('#randomPlay').click(function() {
     var index = Math.round(Math.random());
+    var file;
+    console.log(index)
+    var source = musicSrcs[index]
+    $('#title').text(source.name)
     try {
         $.get(lyricSrcs[index], function(lrc) {
             lyric = parseLyric(lrc);
         });
+        $.get(musicSrcs[index].src, function(file)){
+        	handleFile(file);
+        }
     }catch(err){
         alert(err)
-    }
-    console.log(index)
-    var source = musicSrcs[index]
-    $('#title').text(source.name)
-    audio.src = source.src;
-    var analyser = audioContext.createAnalyser();
-    analyser.fftSize = 8192;
-    let src = audioContext.createMediaElementSource(audio);
-    src.connect(analyser);
-    analyser.connect(audioContext.destination);
-    console.log(audioContext.destination)
-    var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
-    var dataArray = new Uint8Array(bufferLength);
-    console.log(dataArray)
-    canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-    function draw() {
-        analyser.getByteFrequencyData(dataArray);
-        canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-        var barHeight;
-        var step = Math.round(bufferLength / 120);;
-        canvasCtx.beginPath();
-        const mid = Math.round(canvas.width * .5);
-        var randomColor = 'rgb(0, 204, 255)'; //随机颜色
-        for (var i = 0; i < 120; i++) {
-            barHeight = dataArray[step * i];
-            canvasCtx.fillColor = 'rgb(0, 204, 255)';
-            if (dataArray[step * i] > 200) {
-                randomColor = 'rgb(0, 126, 255)';
-            } else if (dataArray[step * i] > 160 || dataArray[step * i] < 50) {
-                randomColor = 'rgb(135, 206, 250)';
-            } else {
-                randomColor = 'rgb(0, 204, 255)'
-            }
-            canvasCtx.fillStyle = randomColor;
-            canvasCtx.fillRect(i * 3 + mid, 80, 2, -barHeight / 4 + 1);
-            canvasCtx.fillRect(mid - (i - 1) * 3, 80, 2, -barHeight / 4 + 1);
-            canvasCtx.fill();
-            canvasCtx.fillRect(i * 3 + mid, 80, 2, barHeight / 4 + 1);
-            canvasCtx.fillRect(mid - (i - 1) * 3, 80, 2, barHeight / 4 + 1);
-        }
-        requestAnimationFrame(draw);
-    };
-    audio.play();
-    draw();
+    }    
 })
