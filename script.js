@@ -168,7 +168,8 @@ function parseLyric(text) {
     return result;
 }
 //随机播放一首歌
-var musicSrcs = ['./assets/daoxiang.mp3', './assets/sun.mp3'];
+var musicSrcs = [{src: './assets/daoxiang.mp3',name : '稻香—周杰伦'},
+				 {src: './assets/sun.mp3', name: "太阳—萧敬腾"}];
 var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc'];
 $('#randomPlay').click(function() {
     var index = Math.round(Math.random());
@@ -181,8 +182,8 @@ $('#randomPlay').click(function() {
     }
     console.log(index)
     var source = musicSrcs[index]
-    $('#title').text(source.substring(9, source.length - 4))
-    audio.src = musicSrcs[index];
+    $('#title').text(source.name)
+    audio.src = source.src;
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 8192;
     let src = audioContext.createMediaElementSource(audio);
