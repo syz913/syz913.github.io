@@ -8,24 +8,6 @@ var AudioContext = window.AudioContext || window.webkitAudioContext || window.mo
 if (!AudioContext) {
     alert("您的浏览器不支持audio API，请更换浏览器（chrome、firefox）再尝试！")
 }
-
-var visualizer = [];//准备绘制的能量球
-var random = function(m, n) {
-    return Math.round(Math.random() * (n - m) + m);　　//返回m~n之间的随机数
-};
-for (var i = 0; i < 120; i++) {
-    var x = random(0, canvas.width),
-        y = random(0, canvas.height),
-        color = "rgba(" + random(0, 255) + "," + random(0, 255) + "," + random(0, 255) + ",0)";　　//随机化颜色
-    visualizer.push({
-        x: x,
-        y: y,
-        dy: Math.random() + 0.1,　　　//保证dy>0.1
-        color: color,
-        radius: 30　　//能量球初始化半径
-    });
-}
-
 // 总结一下接下来的步骤
 // 1 先获取音频文件（目前只支持单个上传）
 // 2 读取音频文件，读取后，获得二进制类型的音频文件
@@ -84,14 +66,14 @@ function handleFile(file, name) {
             console.log(dataArray)
             canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-            //从频谱图中取出120条，避免过多影响视感
-            var step = Math.round(bufferLength / 120);
             function draw() {
                 analyser.getByteFrequencyData(dataArray);
                 canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
                 // canvasCtx.fillRect(0, 0, 500, 500);
                 // var barWidth = (500 / bufferLength) * 2.5;
                 var barHeight;
+                //从频谱图中取出120条，避免过多影响视感
+                var step = Math.round(bufferLength / 120);;
                 canvasCtx.beginPath();
                 const mid = Math.round(canvas.width * .5);
                 var randomColor = 'rgb(0, 204, 255)'; //随机颜色
@@ -121,32 +103,8 @@ function handleFile(file, name) {
                 }
                 requestAnimationFrame(draw);
             };
-            function draw2(){
-            	analyser.getByteFrequencyData(dataArray);
-            	//绘制能量球
-            	for (var i = 0; i < 120; i++) {
-                	var s = visualizer[i];
-                	s.radius = Math.round(dataArray[step * i] / 256 * (window.width > window.height ? canvas.width / 25 : canvas.height / 18));　　//控制能量球大小与画布大小的比例
-                	var gradient = canvasCtx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius);　　//创建能量球的渐变样式
-			        gradient.addColorStop(0, "#fff");
-			        gradient.addColorStop(0.5, "#D2BEC0");
-			        gradient.addColorStop(0.75, s.color.substring(0, s.color.lastIndexOf(",")) + ",0.4)");
-			        gradient.addColorStop(1, s.color);
-			        canvasCtx.fillStyle = gradient;
-			        canvasCtx.beginPath();
-			        canvasCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2, false);　　//画一个能量球
-			        canvasCtx.fill();
-			        s.y = s.y - 2 * s.dy;　　//能量球向上移动
-			        if (s.y <= 0) {　　//到画布顶端的时候重置s.y，随机化s.x
-			            s.y = canvas.height;　　
-			            s.x = random(0, canvas.width);
-			        }
-			    }
-			    requestAnimationFrame(draw2);
-            }
             audio.play();
             draw();
-            draw2();
         });
     }
 }
