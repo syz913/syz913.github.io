@@ -8,7 +8,6 @@ var AudioContext = window.AudioContext || window.webkitAudioContext || window.mo
 if (!AudioContext) {
     alert("您的浏览器不支持audio API，请更换浏览器（chrome、firefox）再尝试！")
 }
-var audioContext = new AudioContext(); //实例化
 // 总结一下接下来的步骤
 // 1 先获取音频文件（目前只支持单个上传）
 // 2 读取音频文件，读取后，获得二进制类型的音频文件
@@ -36,6 +35,7 @@ function handleFile(file) {
             $('#tip').text('解码中,已用时' + count + '秒')
         }, 1000)
         //开始解码，解码成功后执行回调函数
+        var audioContext = new AudioContext();
         audioContext.decodeAudioData(e.target.result, function(buffer) {
             clearInterval(timer)
             $('#tip').text('解码成功，用时共计:' + count + '秒')
@@ -49,7 +49,7 @@ function handleFile(file) {
             // 我们可以把它理解为声卡。所以所有节点中的最后一个节点应该再
             // 连接到audioContext.destination才能听到声音。
             // audioBufferSourceNode.connect(analyser);
-            let src = audioContext.createMediaElementSource(audio);
+            var src = audioContext.createMediaElementSource(audio);
             src.connect(analyser);
             analyser.connect(audioContext.destination);
             console.log(audioContext.destination)
@@ -184,14 +184,13 @@ $('#randomPlay').click(function() {
     var source = musicSrcs[index]
     $('#title').text(source.name)
     audio.src = source.src;
+    audioContext = new AudioContext();
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 8192;
-    let src = audioContext.createMediaElementSource(audio);
+    var src = audioContext.createMediaElementSource(audio);
     src.connect(analyser);
     analyser.connect(audioContext.destination);
-    console.log(audioContext.destination)
     var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
     var dataArray = new Uint8Array(bufferLength);
     console.log(dataArray)
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
