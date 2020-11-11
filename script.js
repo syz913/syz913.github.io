@@ -17,12 +17,12 @@ $('#musicFile').change(function() {
     if (this.files.length == 0) return;
     var file = $('#musicFile')[0].files[0]; //通过input上传的音频文件
     console.log('FILES[0]: ', file);
-    handleFile(file);
+    var fileName = file.name;
+    handleFile(file, fileName.substring(0, fileName.length - 4));
 })
 
-function handleFile(file) {
-    var fileName = file.name;
-    $('#title').text(fileName.substring(0, fileName.length - 4))
+function handleFile(file, name) {
+    $('#title').text(name)
     audio.src = URL.createObjectURL(file);
     var fileReader = new FileReader(); //使用FileReader异步读取文件
     fileReader.readAsArrayBuffer(file); //开始读取音频文件
@@ -176,13 +176,12 @@ $('#randomPlay').click(function() {
     var file;
     console.log(index)
     var source = musicSrcs[index]
-    $('#title').text(source.name)
     try {
         $.get(lyricSrcs[index], function(lrc) {
             lyric = parseLyric(lrc);
         });
         $.get(musicSrcs[index].src, function(file) {
-        	handleFile(file);
+        	handleFile(file, source.name);
         });
     }catch(err){
         alert(err)
