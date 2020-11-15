@@ -190,8 +190,8 @@ window.onload = function() {
     //监听ontimeupdate事件
     document.getElementById('audio').ontimeupdate = function(e) {
         if (this.ended) {
-            audio.play();
-            // palyMusic(0);
+            // audio.play();
+            randomPlay();
         }
         //遍历所有歌词，看哪句歌词的时间与当然时间吻合
         for (var i = 0, l = lyric.length; i < l; i++) {
@@ -243,7 +243,11 @@ window.onload = function() {
     }];
     var lyricSrcs = ['./assets/daoxiang.lrc', './assets/sun.lrc', './assets/silence.lrc', './assets/memory.lrc'];
     $('#randomPlay').click(function() {
-        var index = Math.floor(Math.random() * 4);
+        randomPlay();
+    })
+
+    function randomPlay(){
+    	var index = Math.floor(Math.random() * 4);
         console.log(index)
         var source = musicSrcs[index]
         try {
@@ -322,5 +326,5 @@ window.onload = function() {
         audio.play();
         draw();
         draw2();
-    })
+    }
 }
