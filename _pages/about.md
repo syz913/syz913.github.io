@@ -19,10 +19,10 @@ I am interested in understanding emerging security and privacy risks in complex 
 * **2017.09-2021.06**: Fudan University, School of Computer Science, B.S.
 
 ## News
-* **[Sep. 2025]** 🎉 My paper on mini-app malware has been accepted by **IEEE S&P 2026**!
-* **[Aug. 2025]** 🎉 My page on resource management vulnerabilities in App-in-App cloud services has been accepted by **NDSS 2026**.
+* **[Sep. 2025]** 🎉 Our paper on mini-app malware has been accepted by **IEEE S&P 2026**!
+* **[Aug. 2025]** 🎉 Our page on resource management vulnerabilities in App-in-App cloud services has been accepted by **NDSS 2026**.
 * **[July 2025]** 🚀 Our platform for mini-app security, [白泽·鉴微](https://security.fudan.edu.cn/miniappplatform), is now **online**. We have identified over 50k vulnerable mini-apps.
-* **[Aug. 2024]** 🎉 My paper on credential leakage in mini-apps has been accepted by **NDSS 2025**.
+* **[Aug. 2024]** 🎉 Our paper on credential leakage in mini-apps has been accepted by **NDSS 2025**.
 
 ## Selected Publications
 * **[IEEE S&P 2026]** Convenience at a Cost: The Security Risks of Template-based Development in the App-in-App Ecosystem. **Yizhe Shi**, Zhemin Yang, Yifan Yang, Yunteng Yang, Min Yang. **(CCF-A, Security BIG4 Conference)**
