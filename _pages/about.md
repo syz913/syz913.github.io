@@ -9,7 +9,7 @@ redirect_from:
 
 Welcom to my homepage!
 
-My name is **Yizhe Shi**, a Ph.D. candidate at the College of Computer Science and Artificial Intelligence, Fudan University. I am a student of the [System Software and Security Laboratory](https://security.fudan.edu.cn/), advised by [Prof. Zhemin Yang](https://yangzhemin.github.io/).
+My name is **Yizhe Shi**, a Ph.D. candidate at the College of Computer Science and Artificial Intelligence, Fudan University. I am a student of the [System Software and Security Laboratory](https://security.fudan.edu.cn/), advised by [Prof. Zhemin Yang](https://yangzhemin.github.io/) and [Prof. Min Yang](https://scholar.google.com/citations?user=UnKf9FIAAAAJ&hl=en).
 
 My research interests focus on **Mobile Security**, especially within the **App-in-App ecosystem** (e.g., mini-apps and super-apps), **Program Analysis** and **LLM/Agent Security**.
 I am interested in understanding emerging security and privacy risks in complex mobile and **LLM-augmented ecosystems**, and in building automated, **LLM-assisted techniques** to detect **vulnerabilities and malicious behaviors at scale**.
