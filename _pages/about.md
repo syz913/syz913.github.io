@@ -25,11 +25,14 @@ I am interested in understanding emerging security and privacy risks in complex 
 * **[Aug. 2024]** 🎉 Our paper on credential leakage in mini-apps has been accepted by **NDSS 2025**.
 
 ## Selected Publications
-* **[IEEE S&P 2026]** Convenience at a Cost: The Security Risks of Template-based Development in the App-in-App Ecosystem. **Yizhe Shi**, Zhemin Yang, Yifan Yang, Yunteng Yang, Min Yang. **(CCF-A, Security BIG4 Conference)**
+* **[IEEE S&P 2026]** Convenience at a Cost: The Security Risks of Template-based Development in the App-in-App Ecosystem.   
+  **Yizhe Shi**, Zhemin Yang, Yifan Yang, Yunteng Yang, Min Yang. **(CCF-A, Security BIG4 Conference)**
 
 * **[NDSS 2026]** Better Safe than Sorry: Uncovering the Insecure Resource Management in App-in-App Cloud Services.  
-**Yizhe Shi**, Zhemin Yang, Dingyi Liu, Kangwei Zhong, Jiarun Dai, Min Yang. **(CCF-A, Security BIG4 Conference)**
+  **Yizhe Shi**, Zhemin Yang, Dingyi Liu, Kangwei Zhong, Jiarun Dai, Min Yang. **(CCF-A, Security BIG4 Conference)**
 
-* **[NDSS 2025]** The Skeleton Keys: A Large Scale Analysis of Credential Leakage in Mini-apps. **Yizhe Shi**, Zhemin Yang, Kangwei Zhong, Guangliang Yang, Yifan Yang, Xiaohan Zhang, Min Yang. **(CCF-A, Security BIG4 Conference)**
+* **[NDSS 2025]** The Skeleton Keys: A Large Scale Analysis of Credential Leakage in Mini-apps.  
+  **Yizhe Shi**, Zhemin Yang, Kangwei Zhong, Guangliang Yang, Yifan Yang, Xiaohan Zhang, Min Yang. **(CCF-A, Security BIG4 Conference)**
+
 
 **If you are interested in my research or potential collaborations, please feel free to drop me an email: [yzshi23@m.fudan.edu.cn](mailto:yzshi23@m.fudan.edu.cn).**
