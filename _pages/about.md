@@ -15,8 +15,8 @@ My research interests focus on **Mobile Security**, especially within the **App-
 I am interested in understanding emerging security and privacy risks in complex mobile and **LLM-augmented ecosystems**, and in building automated, **LLM-assisted techniques** to detect **vulnerabilities and malicious behaviors at scale**.
 
 ## Education
-* **2021.09-Now**: Fudan University, College of Computer Science and Artificial Intelligence, Ph.D.
-* **2017.09-2021.06**: Fudan University, School of Computer Science, B.S.
+* **2021.09-Now**: Ph.D., Fudan University, College of Computer Science and Artificial Intelligence.
+* **2017.09-2021.06**: B.S., Fudan University, School of Computer Science.
 
 ## News
 * **[Sep. 2025]** 🎉 Our paper on mini-app malware has been accepted by **IEEE S&P 2026**!
