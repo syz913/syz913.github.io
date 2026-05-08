@@ -1,0 +1,24 @@
+{% include base_path %}
+{% assign current_url = page.url | default: "/" %}
+{% assign zh_prefix = current_url | slice: 0, 4 %}
+
+{% if page.lang == "zh" or zh_prefix == "/zh/" %}
+  {% assign language_label = "English" %}
+  {% assign language_url = page.translation_url | default: current_url | remove_first: "/zh" %}
+  {% if language_url == "" %}
+    {% assign language_url = "/" %}
+  {% endif %}
+{% else %}
+  {% assign language_label = "中文" %}
+  {% if page.translation_url %}
+    {% assign language_url = page.translation_url %}
+  {% elsif current_url == "/" %}
+    {% assign language_url = "/zh/" %}
+  {% else %}
+    {% assign language_url = "/zh" | append: current_url %}
+  {% endif %}
+{% endif %}
+
+<li class="masthead__menu-item persist language-toggle">
+  <a href="{{ language_url | prepend: base_path }}" aria-label="Switch language">{{ language_label }}</a>
+</li>

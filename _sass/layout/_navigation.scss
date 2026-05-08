@@ -234,6 +234,21 @@
       }
     }
 
+    .language-toggle {
+      a {
+        margin: 0 0.5rem;
+        padding: 0.25rem 0.55rem;
+        border: 1px solid var(--global-border-color);
+        border-radius: $border-radius;
+        font-size: $type-size-6;
+        line-height: 1.2;
+      }
+
+      a:before {
+        display: none;
+      }
+    }
+
     a {
       position: relative;
 
