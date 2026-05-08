@@ -11,6 +11,9 @@ main:
   - title: "About Me"
     url: /about/
 
+  - title: "Academic Services"
+    url: /academic-services/
+
   # - title: "Publications"
   #   url: /publications/
 

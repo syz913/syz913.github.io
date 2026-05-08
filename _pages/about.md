@@ -19,6 +19,7 @@ I am interested in understanding emerging security and privacy risks in complex 
 * **2017.09-2021.06**: B.S., Fudan University, School of Computer Science.
 
 ## News
+* **[May 2026]** 🎉 Our mini-app security platform won the **Gold Prize** at the Digital China Innovation Contest (DCIC) 2026!
 * **[Sep. 2025]** 🎉 Our paper on mini-app malware has been accepted by **IEEE S&P 2026**!
 * **[Aug. 2025]** 🎉 Our page on resource management vulnerabilities in App-in-App cloud services has been accepted by **NDSS 2026**.
 * **[July 2025]** 🚀 Our platform for mini-app security, [白泽·鉴微](https://security.fudan.edu.cn/miniappplatform), is now **online**. We have identified over 50k vulnerable mini-apps.
