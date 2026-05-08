@@ -14,6 +14,9 @@ main:
   - title: "Academic Services"
     url: /academic-services/
 
+  - title: "Patents"
+    url: /patents/
+
   # - title: "Publications"
   #   url: /publications/
 
