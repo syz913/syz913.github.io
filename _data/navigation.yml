@@ -17,6 +17,16 @@ main:
   - title: "Patents"
     url: /patents/
 
+main_zh:
+  - title: "关于我"
+    url: /zh/
+
+  - title: "学术服务"
+    url: /zh/academic-services/
+
+  - title: "专利"
+    url: /zh/patents/
+
   # - title: "Publications"
   #   url: /publications/
 

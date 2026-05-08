@@ -3,9 +3,16 @@ layout: compress
 ---
 
 {% include base_path %}
+{% assign current_url = page.url | default: "/" %}
+{% assign zh_prefix = current_url | slice: 0, 4 %}
+{% if page.lang == "zh" or zh_prefix == "/zh/" %}
+  {% assign document_lang = "zh" %}
+{% else %}
+  {% assign document_lang = site.locale | slice: 0,2 %}
+{% endif %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ document_lang }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}

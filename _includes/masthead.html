@@ -1,4 +1,13 @@
 {% include base_path %}
+{% assign current_url = page.url | default: "/" %}
+{% assign zh_prefix = current_url | slice: 0, 4 %}
+{% if page.lang == "zh" or zh_prefix == "/zh/" %}
+  {% assign masthead_title = site.title_zh | default: site.title %}
+  {% assign navigation_links = site.data.navigation.main_zh | default: site.data.navigation.main %}
+{% else %}
+  {% assign masthead_title = site.title %}
+  {% assign navigation_links = site.data.navigation.main %}
+{% endif %}
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -6,8 +15,8 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
-          {% for link in site.data.navigation.main %}
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/{% if page.lang == "zh" or zh_prefix == "/zh/" %}zh/{% endif %}">{{ masthead_title }}</a></li>
+          {% for link in navigation_links %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
             {% else %}

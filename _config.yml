@@ -10,6 +10,7 @@
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
 title                    : "Yizhe Shi"
+title_zh                 : "史一哲"
 title_separator          : "-"
 name                     : &name "Yizhe Shi"
 description              : &description "Yizhe Shi's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
@@ -25,9 +26,12 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Yizhe Shi"
+  name_zh          : "史一哲"
   pronouns         : # example: "she/her"  
   bio              : "School of Computer Science, Fudan University"
+  bio_zh           : "复旦大学计算与智能创新学院"
   location         : "Shanghai"
+  location_zh      : "上海"
   # employer         : "Red Brick University"
   uri              : # URL
   email            : "yzshi23@m.fudan.edu.cn" 
